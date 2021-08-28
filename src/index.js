@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './Components/Home/Home';
+import Login from "./Components/Login/Login";
+import Register from './Components/Register/Register';
+import Navbar from './Components/Navbar/Navbar';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Navbar />
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} ></Route>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/register" component={Register}></Route>
+        <Route>404 Not Found!</Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
