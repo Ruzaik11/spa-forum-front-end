@@ -1,27 +1,63 @@
 import React, { Component } from 'react';
 import './Login.css';
-class Login extends Component {
-    state = {}
-    render() {
-        return (
+import AuthService from '../../Services/AuthService';
 
+class Login extends Component {
+
+    state = { email: 'mnmruzaik@gmail.com', password: 'Welcome1', login: false }
+
+    async login(event, props) {
+
+        event.preventDefault();
+
+        const Credentials = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        const response = await AuthService.login(Credentials);
+
+        if (response) {
+
+            const success = await AuthService.handleLoginSuccess(response);
+
+            if (success) {
+                this.props.update_login();
+                window.location.href = "/forum";
+            }
+
+        } else {
+            alert("Invalid Login info");
+        }
+
+    }
+
+    render() {
+
+        const { email, password } = this.state;
+
+        return (
             <div className="container w-50" >
                 <div className="row" >
                     <div className="col-md-12" >
-                        <div class="card">
-                            <div class="card-body">
-                                <form>
+                        <div className="card">
+                            <div className="card-body">
+                                <form onSubmit={event => this.login(event, this.props)} >
+
                                     <p>Forum User Login</p>
+
                                     <div className="form-group">
                                         <label htmlFor="exampleInputEmail1">Email address</label>
-                                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="" />
+                                        <input value={email} onChange={event => this.setState({ email: event.target.value })} type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="" />
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="exampleInputPassword1">Password</label>
-                                        <input type="password" className="form-control" id="password" placeholder="" />
+                                        <input value={password} onChange={event => this.setState({ password: event.target.value })} type="password" className="form-control" id="password" placeholder="" />
                                     </div>
-                                    <button type="button" onClick="{Login}" className="btn btn-primary">Login</button>
+
+                                    <button type="submit" className="btn btn-primary" >Login</button>
+
                                 </form>
                             </div>
                         </div>
