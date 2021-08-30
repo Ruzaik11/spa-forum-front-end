@@ -4,7 +4,7 @@ import AuthService from '../../Services/AuthService';
 
 class Login extends Component {
 
-    state = { email: 'mnmruzaik@gmail.com', password: 'Welcome1', login: false }
+    state = { email:'', password:'', login: false }
 
     async login(event, props) {
 
@@ -48,12 +48,12 @@ class Login extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="exampleInputEmail1">Email address</label>
-                                        <input value={email} onChange={event => this.setState({ email: event.target.value })} type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="" />
+                                        <input value={email} onChange={event => this.setState({ email: event.target.value })} type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="" required />
                                     </div>
 
                                     <div className="form-group">
                                         <label htmlFor="exampleInputPassword1">Password</label>
-                                        <input value={password} onChange={event => this.setState({ password: event.target.value })} type="password" className="form-control" id="password" placeholder="" />
+                                        <input value={password} onChange={event => this.setState({ password: event.target.value })} type="password" className="form-control" id="password" placeholder="" required />
                                     </div>
 
                                     <button type="submit" className="btn btn-primary" >Login</button>

@@ -1,8 +1,8 @@
 
-let domain = 'http://xz-company.local';
+let domain = process.env.REACT_APP_API_URL;
 
 class URLService {
-
+    
     static loginURL() { return domain + '/api/login'; }
 
     static logoutURL() { return domain + '/api/logout'; }

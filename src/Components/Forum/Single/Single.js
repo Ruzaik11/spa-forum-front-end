@@ -66,7 +66,7 @@ class Single extends Component {
                                             <div className="panel">
                                                 <div className="panel-body">
                                                     <form onSubmit={event => this.addComment(event)} >
-                                                        <textarea value={this.state.comment.comment} onChange={event => this.setState({ comment: event.target.value })} className="form-control" rows={2} placeholder="What are you thinking?" defaultValue={""} />
+                                                        <textarea required value={this.state.comment.comment} onChange={event => this.setState({ comment: event.target.value })} className="form-control" rows={2} placeholder="What are you thinking?" defaultValue={""} />
                                                         <div className="mar-top clearfix">
                                                             <button className="btn btn-sm btn-primary pull-right" type="submit"><i className="fa fa-pencil fa-fw" /> Post</button>
                                                         </div>

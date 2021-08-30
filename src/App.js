@@ -55,6 +55,9 @@ class App extends Component {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
+                  <Route exact path="/">
+                    <Login update_login={this.updateLogin} logged_in={this.state.logged_in} ></Login>
+                  </Route>
                   <Route path="/login">
                     <Login update_login={this.updateLogin} logged_in={this.state.logged_in} ></Login>
                   </Route>
